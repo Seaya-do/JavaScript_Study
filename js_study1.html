@@ -1,29 +1,29 @@
 <html>
-	<head>
-		<TITLE>재귀 함수</TITLE>
-				<script>
-			function factorial(num){
-				if(num > 1){
-					var rf
-					rf = num * factorial(num-1)
-					return rf
-				}
-				else {
-					return num
-				}
-			}
-		</script>
-	</head>
-	<body>
-		<h2>재귀함수의 결과</h2>
-		<script>
-		var num
-		
-		num = prompt("factorial을 구할 수")
-		document.write("<h2>" + num + "factorial = " + factorial(num)+"<h2><p>")
-		</script>	
+<head>
+<TITLE>재귀 함수</TITLE>
+<script>
+function factorial(num){
+if(num > 1){
+	var rf
+	rf = num * factorial(num-1)
+	return rf
+}
+else {
+	return num
+}
+}
+</script>
+</head>
+<body>
+<h2>재귀함수의 결과</h2>
+<script>
+var num
 
-	</body>
+num = prompt("factorial을 구할 수")
+document.write("<h2>" + num + "factorial = " + factorial(num)+"<h2><p>")
+</script>	
+
+</body>
 
 </html>
 
