@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        *{ box-sizing:border-box;}
+        body{
+            /* font-family: 'Gothic A1', sans-serif; */
+            font-family: 'Poppins', sans-serif;
+            font-size:16px;
+            color:#333;
+            margin:0;
+        }
+        a,a:link{
+            text-decoration:none;
+            color:#333;
+        }
+        a:hover{
+            color:#000;
+            text-decoration: underline;
+        }
+        nav{
+            background:rgb(255 255 255 /80%);
+            padding:10px;
+            font-size:40px;
+            font-weight:800;
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            text-align:center;
+            font-variant: small-caps;
+        }
+        .container{
+            max-width:1330px;
+            margin:80px auto 40px;
+        }
+        .row{
+            margin-left:-15px;
+            margin-right:-15px;
+            display:flex;
+            flex-wrap: wrap;
+        }
+        .col{
+            
+            padding:15px;
+        }
+        .col img{
+            max-width:100%;
+        }
+        .col h1{
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow: ellipsis;
+        }
+        .popup{
+            width: 540px;
+            height: 540px;
+            background: #eff5e9;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            transform: translateX(-50%); 
+            top: 150px;
+            box-shadow: 0 0 25px 0 rgba(0,0,0,0.3);
+            display: none;
+           
+
+
+        }
+        popup img{
+            max-width: 540px;
+        }
+        /*
+        position:absolute 나 position:fixed를 정가운데 놓는 공식
+       1. calc(50% - 가로넓이의 절반);
+       2. left:50%
+          transform: translateX(-50%); 
+        */
+
+
+
+        @media screen and(max-width:1200px){
+            .col img{
+            width:33.333334%;
+        }
+        @media screen and(max-width:600px){
+            .col img{
+             max-width:100%;
+        }
+            
+        }
+    }
+            
+    </style>
+    <script src="../jquery/jquery.min.js"></script>
+    <script>
+        $(function(){
+        /*
+        대입연산 `0${n}.gif` -백틱태그 
+        
+        
+        */
+           let str=''; 
+           let n;
+           for(let i=0; i < 12; i++){
+              if(i < 9){
+                 n = '0'+(i+1);  //01 02 03 04  09
+              }else{
+                 n = (i + 1); //10 11 12
+              }
+              str += '<div class="col">';
+              str += '<img src="../image/0'+n+'.gif" alt="001">';
+              str += '<h1>Ruffled Flock Dot Lace</h1>';
+              str += '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>';
+              str += '</div>';
+           }
+           $('.row').html(str); 
+           /* html로 row를 보냄 */
+           $('.col').click(function(){
+            const img = $(this).find('img').attr('src');
+            $('.popup').html(`<img src="${img}" alt="${img}"/>`);
+            $('.popup').fadeIn(300);
+
+           });
+           $('.popup').click(function(){
+            $(this).fadeOut(200);
+           });
+
+
+
+
+        });
+    </script>
+</head>
+<body>
+    <nav>Gallery</nav>
+    <div class="container">
+        <div class="row">
+            <!-- loop -->
+            <div class="col">
+                <img src="../image/001.gif" alt="001">
+                <h1>Ruffled Flock Dot Lace</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+            <!--./ loop -->
+        </div>
+    </div>
+    <div class="popup">
+        TEXT
+
+    </div>
+</body>
+</html>
